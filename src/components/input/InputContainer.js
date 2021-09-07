@@ -8,6 +8,7 @@ const useStyle = makeStyles((theme) => ({
   //theme's spacing default value : 8px
 
   root: {
+    width: "300px",
     marginTop: theme.spacing(2),
   },
 
@@ -27,7 +28,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const InputContainer = ({listId}) => {
+const InputContainer = ({ listId }) => {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
 
@@ -50,7 +51,9 @@ const InputContainer = ({listId}) => {
       <Collapse in={!open}>
         <Paper className={classes.addCard} onClick={() => setOpen(!open)}>
           <AddBox className={classes.addBox} />
-          <Typography>Add a new Card</Typography>
+          <Typography>
+               Add a new Card
+          </Typography>
         </Paper>
       </Collapse>
       

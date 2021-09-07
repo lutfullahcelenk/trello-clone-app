@@ -24,9 +24,9 @@ const List = ({list}) => {
                 <CssBaseline />
                 <Title title={list.title}/>
                 {list.cards.map((card) => {
-                    return <Card key={card.id} card={card}/>
+                    return <Card key={card.id} card={card} />
                 })}
-                <InputContainer />
+                <InputContainer listId={list.id} />
             </Paper>
             
         </div>

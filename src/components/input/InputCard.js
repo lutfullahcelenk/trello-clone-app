@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Paper, InputBase, Button, IconButton } from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
 import { makeStyles } from "@material-ui/core";
+import storeApi from "../../utils/storeApi";
 
 
 
@@ -26,26 +27,40 @@ const useStyle = makeStyles((theme) => ({
     }
   }));
 
-const InputCard = ({setOpen}) => {
+const InputCard = ({setOpen , listId}) => {
 
     const classes = useStyle();
+    const {addMoreCard} = useContext(storeApi);
+    const [cardTitle,setCardTitle] = useState("");
+
+    const handleChange = (e) => {
+      setCardTitle(e.target.value)
+      // console.log(cardTitle)
+    }
+
+    const handleApprove = () => {
+      addMoreCard(cardTitle,listId);
+      setCardTitle('');
+    }
 
   return (
     <div>
       <div>
         <Paper className={classes.card}>
           <InputBase
+            onChange = {handleChange}
             multiline //you can write more than one line
             fullWidth // again it is expand the width to 100%
             inputProps={{
                 className: classes.input
             }}
             placeholder = "Enter a title of the card..."
+            value={cardTitle}
           />
         </Paper>
       </div>
       <div className={classes.confirm}>
-          <Button className={classes.btn}>Add Card</Button>
+          <Button className={classes.btn} onClick={handleApprove} >Add Card</Button>
           <IconButton onClick={() => setOpen(false)}>
               <ClearIcon />
           </IconButton>

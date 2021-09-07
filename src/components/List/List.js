@@ -1,6 +1,7 @@
 import React from 'react';
 import { CssBaseline, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
+import Title from '../Title';
 
 const useStyle = makeStyles((theme) => ({
     //theme's spacing default value : 8px
@@ -19,7 +20,7 @@ const List = () => {
         <div>
             <Paper className={classes.root}>
                 <CssBaseline />
-                <Typography>TO DO</Typography>
+                <Title />
             </Paper>
             
         </div>

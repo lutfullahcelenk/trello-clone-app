@@ -49,7 +49,8 @@ const InputContainer = () => {
 
       <Collapse in={!open}>
         <Paper className={classes.addCard} onClick={() => setOpen(!open)}>
-          <Typography>+ Add a new Card</Typography>
+          <AddBox className={classes.addBox} />
+          <Typography>Add a new Card</Typography>
         </Paper>
       </Collapse>
       

@@ -1,7 +1,8 @@
-import { Paper, Typography } from "@material-ui/core";
-import React from "react";
+import { Collapse, Paper, Typography } from "@material-ui/core";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import { AddBox } from "@material-ui/icons";
+import InputCard from "./InputCard";
 
 const useStyle = makeStyles((theme) => ({
   //theme's spacing default value : 8px
@@ -15,26 +16,43 @@ const useStyle = makeStyles((theme) => ({
     padding: theme.spacing(1, 1, 1, 2),
     margin: theme.spacing(0, 1, 1, 1),
     background: "#lightgray",
-    "&:hover" : {
-        backgroundColor : "green",
-        color: "white",
-    }
+    "&:hover": {
+      backgroundColor: "green",
+      color: "white",
+    },
   },
 
   addBox: {
-      margin: theme.spacing(0,1,1,1),
-  }
+    margin: theme.spacing(0, 1, 1, 1),
+  },
 }));
 
 const InputContainer = () => {
   const classes = useStyle();
+  const [open, setOpen] = useState(false);
 
   return (
     <div className={classes.root}>
-      <Paper className={classes.addCard}>
-        <AddBox className={classes.addBox} />
-        <Typography>Add a New Card</Typography>
-      </Paper>
+      {/*TERNARY */
+      /* {open ? (
+        <InputCard setOpen={setOpen} />
+      ) : (
+        <Paper className={classes.addCard} onClick={() => setOpen(!open)}>
+          <AddBox className={classes.addBox} />
+          <Typography>Add a New Card</Typography>
+        </Paper>
+      )} */}
+
+      <Collapse in={open}>
+        <InputCard setOpen={setOpen} />
+      </Collapse>
+
+      <Collapse in={!open}>
+        <Paper className={classes.addCard} onClick={() => setOpen(!open)}>
+          <Typography>+ Add a new Card</Typography>
+        </Paper>
+      </Collapse>
+      
     </div>
   );
 };

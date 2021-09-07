@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import {v4 as uuid} from "uuid";
 import "./App.css";
 import InputContainer from "./components/input/InputContainer";
@@ -44,17 +44,34 @@ function App() {
       setData(newState);
   }
 
+  const addMoreList = (title) => {
+    const newListId = uuid()
+    const newList = {
+      id: newListId,
+      title: title,
+      cards : []
+    }
+
+    const newState = {
+      lists : {
+        ...data.lists,
+        [newListId] : newList
+      },
+      listIds: [...data.listIds, newListId],
+    }
+    setData(newState);
+  }
+
 
   return (
-    <StoreApi.Provider value= {{addMoreCard}}>
+    <StoreApi.Provider value= {{addMoreCard, addMoreList}}>
       <div className={classes.root}>
         {data.listIds.map((listId) => {
-          const list = data.lists[listId];
-          return <List list={list} key={listId} />;
-        })}
-
-        <InputContainer type="list"/>
-      </div>
+            const list = data.lists[listId];
+            return(<List list = {list} key={listId}/>)
+       })}
+       <InputContainer type = "list"/>
+    </div>
     </StoreApi.Provider>
   );
 }

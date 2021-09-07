@@ -1,5 +1,5 @@
 import React from 'react';
-import { CssBaseline, Paper, Typography } from '@material-ui/core';
+import { CssBaseline, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import Title from './Title';
 import Card from './Card';
@@ -26,7 +26,7 @@ const List = ({list}) => {
                 {list.cards.map((card) => {
                     return <Card key={card.id} card={card} />
                 })}
-                <InputContainer listId={list.id} />
+                <InputContainer listId={list.id} type="card"/>
             </Paper>
             
         </div>

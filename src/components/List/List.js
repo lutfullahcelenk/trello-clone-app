@@ -3,6 +3,7 @@ import { CssBaseline, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import Title from './Title';
 import Card from './Card';
+import InputContainer from '../input/InputContainer';
 
 const useStyle = makeStyles((theme) => ({
     //theme's spacing default value : 8px
@@ -25,6 +26,7 @@ const List = () => {
                 <Card />
                 <Card />
                 <Card />
+                <InputContainer />
             </Paper>
             
         </div>

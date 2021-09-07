@@ -25,19 +25,24 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const InputCard = ({ setOpen, listId }) => {
+const InputCard = ({ setOpen, listId ,type }) => {
   const classes = useStyle();
-  const { addMoreCard } = useContext(storeApi);
-  const [cardTitle, setCardTitle] = useState("");
+  const { addMoreCard, addMoreList } = useContext(storeApi);
+  const [title, setTitle] = useState("");
 
   const handleChange = (e) => {
-    setCardTitle(e.target.value);
-    // console.log(cardTitle)
+    setTitle(e.target.value);
+    // console.log(title)
   };
 
   const handleApprove = () => {
-    addMoreCard(cardTitle, listId);
-    setCardTitle("");
+    if(type === "card"){
+      addMoreCard(title, listId);
+      setTitle("");
+    }else{
+      addMoreList(title)
+    }
+    
   };
 
   return (
@@ -51,15 +56,14 @@ const InputCard = ({ setOpen, listId }) => {
             inputProps={{
               className: classes.input,
             }}
-            placeholder = "Enter a title of the card..."
-           
-            value={cardTitle}
+            placeholder = {`Enter a title of the ${type}`}
+            value={title}
           />
         </Paper>
       </div>
       <div className={classes.confirm}>
         <Button className={classes.btn} onClick={handleApprove}>
-            Add Card
+            {`Add ${type}`}
         </Button>
         <IconButton onClick={() => setOpen(false)}>
           <ClearIcon />

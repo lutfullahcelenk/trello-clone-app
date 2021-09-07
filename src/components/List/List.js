@@ -17,20 +17,19 @@ const useStyle = makeStyles((theme) => ({
 }))
 
 const List = ({list}) => {
-    const classes = useStyle()
+    const classes = useStyle();
     return (
         <div>
-            <Paper className={classes.root}>
-                <CssBaseline />
-                <Title title={list.title}/>
-                {list.cards.map((card) => {
-                    return <Card key={card.id} card={card} />
-                })}
-                <InputContainer listId={list.id} type="card"/>
+            <Paper className = {classes.root}>
+                <CssBaseline/>
+                <Title title = {list.title}/>
+                {list.cards.map((card) =>(
+                    <Card key={card.id}  card = {card} />
+                ))}
+                <InputContainer listId = {list.id} type = "card"/>
             </Paper>
-            
         </div>
     )
 }
 
-export default List
+export default List;

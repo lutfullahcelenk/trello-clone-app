@@ -37,7 +37,7 @@ function App() {
       const newState = {
         ...data, 
           lists:{
-            ...data.list,
+            ...data.lists,
             [listId] : list,
           },
       }

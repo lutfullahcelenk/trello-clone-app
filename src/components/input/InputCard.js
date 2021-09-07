@@ -41,6 +41,7 @@ const InputCard = ({ setOpen, listId ,type }) => {
       setTitle("");
     }else{
       addMoreList(title)
+      setTitle("")
     }
     
   };

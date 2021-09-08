@@ -96,7 +96,7 @@ const onDragEnd = (result) => {
 
   if(source.droppableId === destination.droppableId){
       sourceList.cards.splice(source.index,1)
-      destinationList.cardssplice(destination.index, 0, draggingCard);
+      destinationList.cards.splice(destination.index, 0, draggingCard);
       const newnewState = {
         ...data,
         lists: {

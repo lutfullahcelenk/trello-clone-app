@@ -89,10 +89,10 @@ const onDragEnd = (result) => {
   }
 
   const sourceList = data.lists[source.droppableId];
-  const destinationList= data.lists[destination.droppableId]
+  const destinationList= data.lists[destination.droppableId];
   const draggingCard = sourceList.cards.filter(
     (card) => card.id === draggableId
-  )
+  )[0];
 
   if(source.droppableId === destination.droppableId){
       sourceList.cards.splice(source.index,1)
@@ -101,7 +101,7 @@ const onDragEnd = (result) => {
         ...data,
         lists: {
           ...data.lists,
-          [sourceList.id] : destinationList
+          [sourceList.id] : destinationList,
         },
       };
       // console.log(newnewState);

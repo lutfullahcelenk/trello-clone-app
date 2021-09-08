@@ -1,6 +1,7 @@
 import { Paper } from '@material-ui/core'
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
+import { Draggable } from 'react-beautiful-dnd';
 
 const useStyle = makeStyles((theme) => ({
     //theme's spacing default value : 8px
@@ -12,15 +13,23 @@ const useStyle = makeStyles((theme) => ({
 
 }))
 
-const Card = ({card}) => {
+const Card = ({card,index}) => {
 
     const classes = useStyle()
 
     return (
         <div>
-            <Paper className={classes.card}>
-                {card.content}
-            </Paper>
+            <Draggable draggableId={card.id} index={index} >
+                {(provided)=> (
+                    <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
+                        <Paper className={classes.card}>
+                            {card.content}
+                        </Paper>
+                    </div>
+                )}
+                
+            </Draggable>
+            
         </div>
     )
 }

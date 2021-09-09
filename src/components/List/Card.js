@@ -2,7 +2,6 @@ import { Paper } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { Draggable } from "react-beautiful-dnd";
-import CardContainer from "./CardContainer";
 
 
 
@@ -31,7 +30,7 @@ const Card = ({ card, index }) => {
             {...provided.draggableProps}
           >
             <Paper className={classes.card}>
-              <CardContainer card={card} index={index}/>
+              {card.content}
               
             </Paper>
           </div>

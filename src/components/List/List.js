@@ -36,8 +36,8 @@ const List = ({ list, index }) => {
                 {...provided.droppableProps}
                 className={classes.cardContainer}
               >
-                {list.cards.map((card, index) => (
-                  <Card key={card.id} card={card} index={index} />
+                {list.cards.map((card, idx) => (
+                  <Card key={card.id} card={card} index={idx} />
                 ))}
                 
                 {provided.placeholder}

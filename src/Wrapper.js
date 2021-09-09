@@ -19,6 +19,7 @@ const useStyle = makeStyles((theme) => ({
 function Wrapper() {
   const classes = useStyle();
   const [data, setData] = useState(store);
+
   const addMoreCard = (title, listId) => {
     const newCardId = uuid();
     // en güzel key verme ve id oluşturma yöntemlerinden biriymiş.Stackoverflow sağolsun...
@@ -27,10 +28,10 @@ function Wrapper() {
       content: title,
       //title = e.target.value ile gelen değer
     };
-
+    
     const list = data.lists[listId];
     list.cards = [...list.cards, newCard];
-
+    
     const newState = {
       ...data,
       lists: {
@@ -39,7 +40,10 @@ function Wrapper() {
       },
     };
     setData(newState);
+    console.log(data)
   };
+  
+
 
   const addMoreList = (title) => {
     const newListId = uuid();
@@ -126,8 +130,9 @@ function Wrapper() {
     }
   };
 
+
   return (
-    <StoreApi.Provider value={{ addMoreCard, addMoreList, updateListTitle }}>
+    <StoreApi.Provider value={{ addMoreCard, addMoreList, updateListTitle, handleDelete }}>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="app" type="list" direction="horizontal">
           {(provided) => (

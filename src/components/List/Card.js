@@ -19,6 +19,7 @@ const useStyle = makeStyles((theme) => ({
 
 const Card = ({ card, index }) => {
   const classes = useStyle();
+  
 
   return (
     <div>
@@ -30,7 +31,7 @@ const Card = ({ card, index }) => {
             {...provided.draggableProps}
           >
             <Paper className={classes.card}>
-              <CardContainer card={card}/>
+              <CardContainer card={card} index={index}/>
               
             </Paper>
           </div>

@@ -74,6 +74,7 @@ function Wrapper() {
     setData(newState);
   };
 
+
   const onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
     // console.log(`destination`, destination);

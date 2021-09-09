@@ -1,8 +1,10 @@
-import { Typography, InputBase } from "@material-ui/core";
+import { Typography, InputBase, IconButton } from "@material-ui/core";
 import React, { useContext, useState } from "react";
 import { makeStyles } from "@material-ui/core";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import storeApi from "../../utils/storeApi";
+import ClearIcon from "@material-ui/icons/Clear";
+
+
 
 const useStyle = makeStyles((theme) => ({
   //theme's spacing default value : 8px
@@ -29,19 +31,19 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const Title = ({title, listId}) => {
+const Title = ({ title, listId }) => {
   const [open, setOpen] = useState(false);
-  const [name,setName] = useState(title);
-  const { updateListTitle} = useContext(storeApi);
+  const [name, setName] = useState(title);
+  const { updateListTitle } = useContext(storeApi);
   const classes = useStyle();
   const handleChange = (e) => {
-      setName(e.target.value);
-  }
+    setName(e.target.value);
+  };
 
   const handleBlur = () => {
     setOpen(false);
-    updateListTitle(name, listId)
-  }
+    updateListTitle(name, listId);
+  };
 
   return (
     <div>
@@ -67,7 +69,9 @@ const Title = ({title, listId}) => {
           >
             {title}
           </Typography>
-          <MoreHorizIcon />
+          <IconButton>
+            <ClearIcon />
+          </IconButton>
         </div>
       )}
     </div>

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 function App() {
   const lists = useSelector((state) => state.lists);
-  console.log(lists);
+  // console.log(lists);
 
   return (
     <div>

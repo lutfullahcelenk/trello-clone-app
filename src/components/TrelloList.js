@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
+import TrelloActionButton from './TrelloActionButton';
 import TrelloCard from './TrelloCard';
 
 
@@ -11,7 +12,8 @@ const useStyles = makeStyles ({
         width: 300,
         padding: 8,
         marginRight: "20px",
-    }
+    },
+    
 })
 
 const TrelloList = ({title , cards}) => {
@@ -20,8 +22,13 @@ const TrelloList = ({title , cards}) => {
 
     return (
         <div className={classes.container}>
+
             <h3>{title}</h3>
+
             {cards.map(card=> <TrelloCard text={card.text} key={card.id} />)}
+
+            <TrelloActionButton type="card" />
+
         </div>
     )
 }

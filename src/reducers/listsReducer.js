@@ -1,3 +1,5 @@
+let listId = 2;
+let cardID = 4;
 
 const initialState= [
     {
@@ -37,8 +39,38 @@ const initialState= [
 const listsReducer =  ( state= initialState ,action) => {
     switch (action.type) {
         
+        case "ADD_LIST" : 
+            const newList = {
+                title : action.payload,
+                cards : [],
+                id : listId
+            }
+            listId +=1;
+            return [...state, newList];
+
+        case "ADD_CARD" :
+            const newCard = {
+                text : action.payload.text,
+                id : cardID
+            }
+            cardID++;
+            const newState = state.map(list => {
+                if(list.id === action.payload.listId){
+                    return {
+                        ...list,
+                        cards: [...list.cards ,newCard]
+                    }
+                }else{
+                    return list;
+                }
+            })
+            return newState;
+            
+            
+
         default:
             return state;
+            
     }
 }
 

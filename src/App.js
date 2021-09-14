@@ -1,10 +1,13 @@
 import React from "react";
 import "./App.css";
-
+import TrelloList from "./components/TrelloList";
 
 function App() {
-  return(
-    <h1>Hello</h1>
+  return (
+    <div>
+      <h1>Hello</h1>
+      <TrelloList title="Test" />
+    </div>
   );
 }
 

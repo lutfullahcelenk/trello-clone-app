@@ -1,5 +1,5 @@
 import {
-  Typography,
+  Button,
   Paper,
   Icon,
   makeStyles,
@@ -7,6 +7,9 @@ import {
   InputBase,
 } from "@material-ui/core";
 import React, { useState } from "react";
+import { addList } from "../actions/listsActions";
+import { useDispatch } from "react-redux";
+import {addCard}  from "../actions/cardsActions";
 
 const useStyles = makeStyles({
   addCard: {
@@ -41,32 +44,49 @@ const useStyles = makeStyles({
   },
 });
 
-const TrelloActionButton = ({ type }) => {
+const TrelloActionButton = ({ type, listId }) => {
   const classes = useStyles();
   const [formOpen, setFormOpen] = useState(false);
-  const [text, setText] = useState("")
+  const [text, setText] = useState("");
+  const dispatch = useDispatch();
+
+  const handleAddList = () => {
+    if (text) {
+      dispatch(addList(text));
+      setText("");
+    }
+  };
+
+  const handleAddCard = () => {
+    if (text) {
+      dispatch(addCard(listId,text));
+      setText("");
+    }
+  };
 
   return (
     <div>
       <Collapse in={formOpen}>
-        <InputBase 
+        <InputBase
           multiline
           fullWidth
-          value= {text}
+          value={text}
           placeholder={
             type === "card"
               ? "Enter a title of this card..."
               : "Enter a list title"
           }
           onBlur={() => setFormOpen(false)}
-          onChange = {(e) => setText(e.target.value)}
-
+          onChange={(e) => setText(e.target.value)}
         />
-        
+
         <div className={classes.confirm}>
-          <Typography className={classes.btnConfirm}>
+          <Button
+            className={classes.btnConfirm}
+            onClick={type === "card" ? handleAddCard : handleAddList}
+          >
             {type === "card" ? "Add Card" : "Add List"}
-          </Typography>
+          </Button>
           <Icon
             onClick={() => setFormOpen(!formOpen)}
             className={classes.btnClose}
@@ -82,9 +102,9 @@ const TrelloActionButton = ({ type }) => {
           onClick={() => setFormOpen(!formOpen)}
         >
           <Icon>add</Icon>
-          <Typography>
+          <Button>
             {type === "card" ? "Add a new card" : "Add a new List"}
-          </Typography>
+          </Button>
         </Paper>
       </Collapse>
     </div>

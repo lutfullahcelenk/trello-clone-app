@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
-import Wrapper from "./Wrapper";
 
 
 function App() {
-  return <Wrapper />;
+  return(
+    <h1>Hello</h1>
+  );
 }
 
 export default App;

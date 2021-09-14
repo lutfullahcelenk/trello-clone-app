@@ -11,7 +11,8 @@ const useStyles = makeStyles ({
         borderRadius : 3,
         width: 300,
         padding: 8,
-        marginRight: "20px",
+        height: "100%",
+        margin: "0 20px",
     },
     
 })

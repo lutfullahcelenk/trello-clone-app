@@ -44,19 +44,25 @@ const useStyles = makeStyles({
 const TrelloActionButton = ({ type }) => {
   const classes = useStyles();
   const [formOpen, setFormOpen] = useState(false);
+  const [text, setText] = useState("")
 
   return (
     <div>
       <Collapse in={formOpen}>
-        <InputBase
+        <InputBase 
           multiline
           fullWidth
+          value= {text}
           placeholder={
             type === "card"
               ? "Enter a title of this card..."
               : "Enter a list title"
           }
+          onBlur={() => setFormOpen(false)}
+          onChange = {(e) => setText(e.target.value)}
+
         />
+        
         <div className={classes.confirm}>
           <Typography className={classes.btnConfirm}>
             {type === "card" ? "Add Card" : "Add List"}

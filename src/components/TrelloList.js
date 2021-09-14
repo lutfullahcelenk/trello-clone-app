@@ -17,7 +17,7 @@ const useStyles = makeStyles ({
     
 })
 
-const TrelloList = ({title , cards}) => {
+const TrelloList = ({title , cards , listId}) => {
 
     const classes = useStyles();
 
@@ -28,7 +28,7 @@ const TrelloList = ({title , cards}) => {
 
             {cards.map(card=> <TrelloCard text={card.text} key={card.id} />)}
 
-            <TrelloActionButton type="card" />
+            <TrelloActionButton type="card" listId = {listId} />
 
         </div>
     )

@@ -4,16 +4,21 @@ import TrelloList from "./components/TrelloList";
 import { useSelector } from "react-redux";
 import TrelloActionButton from "./components/TrelloActionButton";
 
-function App() {
+const App = () => {
   const lists = useSelector((state) => state.lists);
   // console.log(lists);
 
   return (
     <div>
       <h1>Hello</h1>
-      <div style={{display:"flex", marginRight:"8px"}}>
+      <div style={{ display: "flex", marginRight: "8px" }}>
         {lists.map((list) => (
-          <TrelloList title={list.title} cards={list.cards} key={list.id} />
+          <TrelloList
+          title={list.title}
+          cards={list.cards}
+          key={list.id}
+          listId = {list.id}
+          />
         ))}
         <TrelloActionButton type="list" />
       </div>

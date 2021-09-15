@@ -3,7 +3,7 @@ let cardID = 5;
 
 const initialState = [
   {
-    title: "Last Episode",
+    title: "TODO",
     id: `list-${0}`,
     cards: [
       {
@@ -17,7 +17,7 @@ const initialState = [
     ],
   },
   {
-    title: "This Episode",
+    title: "DOING",
     id: `list-${1}`,
     cards: [
       {

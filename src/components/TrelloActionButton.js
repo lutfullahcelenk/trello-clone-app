@@ -102,7 +102,7 @@ const TrelloActionButton = ({ type, listId }) => {
           onClick={() => setFormOpen(!formOpen)}
         >
           <Icon>add</Icon>
-          <Button>
+          <Button className={classes.btnConfirm}>
             {type === "card" ? "Add a new card" : "Add a new List"}
           </Button>
         </Paper>

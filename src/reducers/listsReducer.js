@@ -1,39 +1,40 @@
 let listId = 2;
-let cardID = 4;
+let cardID = 5;
 
-const initialState= [
-    {
-        title : "ToDo",
-        id: 0,
-        cards: [{
-            id: 0,
-            text: "Learn ReactJS and Redux",
-        },
-        {
-            id:1,
-            text: "Finish the case study",
-        },]
-    },
-
-    {
-        title : "In Progress",
-        id: 1,
-        cards: [{
-            id: 0,
-            text: "Trello React App",
-        },
-        {
-            id:1,
-            text: "Have a Nice Lunch",
-        },
-        {
-            id:2,
-            text: "Let's do some training",
-        },
-    
-    ]
-    }
-]
+const initialState = [
+  {
+    title: "Last Episode",
+    id: `list-${0}`,
+    cards: [
+      {
+        id: `card-${0}`,
+        text: "Learn react and redux",
+      },
+      {
+        id: `card-${1}`,
+        text: "Learn material ui",
+      },
+    ],
+  },
+  {
+    title: "This Episode",
+    id: `list-${1}`,
+    cards: [
+      {
+        id: `card-${2}`,
+        text: "Learn html and css",
+      },
+      {
+        id: `card-${3}`,
+        text: "Learn bootstrap",
+      },
+      {
+        id: `card-${4}`,
+        text: "Learn Javascript",
+      },
+    ],
+  },
+];
 
 
 const listsReducer =  ( state= initialState ,action) => {
@@ -43,7 +44,7 @@ const listsReducer =  ( state= initialState ,action) => {
             const newList = {
                 title : action.payload,
                 cards : [],
-                id : listId
+                id : `list-${listId}`,
             }
             listId +=1;
             return [...state, newList];
@@ -51,7 +52,7 @@ const listsReducer =  ( state= initialState ,action) => {
         case "ADD_CARD" :
             const newCard = {
                 text : action.payload.text,
-                id : cardID
+                id :`card-${cardID}`
             }
             cardID++;
             const newState = state.map(list => {
@@ -65,6 +66,49 @@ const listsReducer =  ( state= initialState ,action) => {
                 }
             })
             return newState;
+
+            case "DRAG_HAPPENED":
+                {
+                const {
+                  droppableIdStart,
+                  droppableIdEnd,
+                  droppableIndexStart,
+                  droppableIndexEnd,
+                //   draggableId,
+                  type
+                } = action.payload
+                const newState = [...state]
+        
+                //dragging lists around
+        
+                if(type === "list"){
+                  const list = newState.splice(droppableIndexStart,1)
+                  newState.splice(droppableIndexEnd,0,...list)
+                  return newState
+                }
+        
+        
+                //In the same list
+                if(droppableIdStart === droppableIdEnd){
+                  const list = state.find(list => droppableIdStart === list.id)
+                  const card = list.cards.splice(droppableIndexStart,1)
+                  list.cards.splice(droppableIndexEnd,0,...card)
+                }
+        
+                //otherList
+                if(droppableIdStart !== droppableIdEnd){
+                  // find the List where drag happened
+                  const listStart = state.find(list => droppableIdStart === list.id)
+                  // pull out the card from this list
+                  const card = listStart.cards.splice(droppableIndexStart,1)
+                  // find the list where drag ended
+                  const listEnd = state.find(list => droppableIdEnd === list.id)
+                  // put the card in the new list
+                  listEnd.cards.splice(droppableIndexEnd,0,...card)
+                }
+        
+                return newState
+              }
             
             
 

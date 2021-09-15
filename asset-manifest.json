@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ReactProject-trello-clone-app/static/css/main.029b70b4.chunk.css",
+    "main.js": "/ReactProject-trello-clone-app/static/js/main.c46031c6.chunk.js",
+    "main.js.map": "/ReactProject-trello-clone-app/static/js/main.c46031c6.chunk.js.map",
+    "runtime-main.js": "/ReactProject-trello-clone-app/static/js/runtime-main.d35450fb.js",
+    "runtime-main.js.map": "/ReactProject-trello-clone-app/static/js/runtime-main.d35450fb.js.map",
+    "static/js/2.718ea659.chunk.js": "/ReactProject-trello-clone-app/static/js/2.718ea659.chunk.js",
+    "static/js/2.718ea659.chunk.js.map": "/ReactProject-trello-clone-app/static/js/2.718ea659.chunk.js.map",
+    "index.html": "/ReactProject-trello-clone-app/index.html",
+    "static/css/main.029b70b4.chunk.css.map": "/ReactProject-trello-clone-app/static/css/main.029b70b4.chunk.css.map",
+    "static/js/2.718ea659.chunk.js.LICENSE.txt": "/ReactProject-trello-clone-app/static/js/2.718ea659.chunk.js.LICENSE.txt",
+    "static/media/Trello-Logo.wine.dce43317.png": "/ReactProject-trello-clone-app/static/media/Trello-Logo.wine.dce43317.png",
+    "static/media/index.css": "/ReactProject-trello-clone-app/static/media/backgroundimage.b152d3c8.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d35450fb.js",
+    "static/js/2.718ea659.chunk.js",
+    "static/css/main.029b70b4.chunk.css",
+    "static/js/main.c46031c6.chunk.js"
+  ]
+}

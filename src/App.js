@@ -6,6 +6,7 @@ import TrelloActionButton from "./components/TrelloActionButton";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
 import { sort } from "./actions/listsActions";
+import Navbar from "./components/Navbar";
 
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div>
+        <Navbar />
         <Droppable droppableId="all-lists" direction="horizontal" type="list">
           {(provided) => (
             <div

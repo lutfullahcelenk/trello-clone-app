@@ -13,6 +13,11 @@ const useStyles = makeStyles({
     height: "100%",
     margin: "0 20px",
   },
+  h3: {
+    color : "#5aac74",
+    fontSize : "1.5rem",
+    fontWeight : "bolder"
+  }
 });
 
 const TrelloList = ({ title, cards, listId, index }) => {
@@ -33,7 +38,7 @@ const TrelloList = ({ title, cards, listId, index }) => {
                 ref={provided.innerRef}
                 className={classes.container}
               >
-                <h3>{title}</h3>
+                <h3 className={classes.h3}>{title}</h3>
 
                 {cards.map((card, index) => (
                   <TrelloCard
